@@ -30,10 +30,16 @@ public class Main {
 
         ReservationService reservationService = new ReservationService();
 
-        //Select reservation by id: Handling the complex Select Statement XML containing collection and association
+        /*
+            Select reservation by id: Handling the complex inner custom object & collection by
+            using XML mapping containing collection and association
+         */
         logger.info("Select reservation by Id with inner join 3 tables below \n" + reservationService.selectReservationById(1));
 
-        //Insert new reservation: Handling the complex insert statement xml containing collection and association
+        /*
+            Insert new reservation: Handling the complex inner custom object & collection by
+            using XML mapping containing collection and association
+         */
         RoomType roomTypeForResId7 = new RoomType();
         roomTypeForResId7.setId(2);
 
@@ -48,7 +54,10 @@ public class Main {
 
         reservationService.insertReservation(reservation7);
 
-        //Update reservation: Handling the complex Update Statement XML containing collection and association
+        /*
+            Update reservation: Handling the complex inner custom object & collection by
+            using XML mapping containing collection and association
+         */
         Guest setGuestUpdate = new Guest();
         setGuestUpdate.setId(4);
 
@@ -71,7 +80,10 @@ public class Main {
         //Delete reservation
         reservationService.deleteReservation(7);
 
-        //Select all reservations: Handling the complex Select Statement XML containing collection and association
+        /*
+            Select all reservations: Handling the complex inner custom object & collection by
+            using XML mapping containing collection and association
+         */
         logger.info("Select all reservations by left join 3 tables below \n" + reservationService.selectAllReservations());
 
         logger.info("----------");
