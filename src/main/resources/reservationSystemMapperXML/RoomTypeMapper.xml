@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace="reservationSystem.mappers.RoomTypeMapper">
+
+    <select id="selectRoomTypeById" resultMap="roomTypeResultMap">
+        SELECT roomTypeId, roomTypeName, description FROM roomType WHERE roomTypeId = #{id}
+    </select>
+
+    <select id="selectAllRoomTypes" resultMap="roomTypeResultMap">
+        SELECT * FROM roomType
+    </select>
+
+    <insert id="insertRoomType" parameterType="RoomType">
+        INSERT INTO roomType (roomTypeId, roomTypeName, description)
+        VALUES (#{id}, #{name}, #{description})
+    </insert>
+
+    <update id="updateRoomType" parameterType="RoomType">
+        UPDATE roomType SET roomTypeName = #{name}, description = #{description}
+        WHERE roomTypeId = #{id}
+    </update>
+
+    <delete id="deleteRoomType" parameterType="RoomType">
+        DELETE FROM roomType WHERE roomTypeId = #{id}
+    </delete>
+
+    <resultMap id="roomTypeResultMap" type="RoomType" autoMapping="false">
+        <id property="id" column="roomTypeId"/>
+        <result property="name" column="roomTypeName"/>
+        <result property="description" column="description"/>
+    </resultMap>
+
+</mapper>

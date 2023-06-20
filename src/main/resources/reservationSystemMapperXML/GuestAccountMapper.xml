@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace="reservationSystem.mappers.GuestAccountMapper">
+
+    <select id="selectGuestAccountById" resultMap="guestAccountResultMap">
+        SELECT guestAccount.guestAccountId, guestAccount.username, guestAccount.password,
+                guest.guestId, guest.guestFirstName, guest.guestLastName, guest.guestEmail, guest.guestPhone
+        FROM guestAccount
+        JOIN guest ON guestAccount.guestId = guest.guestId
+        WHERE guestAccountId = #{id}
+    </select>
+
+    <insert id="insertGuestAccount" parameterType="GuestAccount">
+        INSERT INTO guestAccount (guestAccountId, username, password, guestId)
+        VALUES (#{id}, #{username}, #{password}, #{guest.id})
+    </insert>
+
+    <update id="updateGuestAccount" parameterType="GuestAccount">
+        UPDATE guestAccount SET username = #{username}, password = #{password}, guestId = #{guest.id}
+        WHERE guestAccountId = #{id}
+    </update>
+
+    <delete id="deleteGuestAccount" parameterType="GuestAccount">
+        DELETE FROM guestAccount WHERE guestAccountId = #{id}
+    </delete>
+
+    <select id="selectAllGuestAccounts" resultMap="guestAccountResultMap">
+        SELECT guestAccount.guestAccountId, guestAccount.username, guestAccount.password,
+        guest.guestId, guest.guestFirstName, guest.guestLastName, guest.guestEmail, guest.guestPhone
+        FROM guestAccount
+        LEFT JOIN guest ON guestAccount.guestId = guest.guestId
+    </select>
+
+
+    <resultMap id="guestAccountResultMap" type="GuestAccount" autoMapping="false">
+        <id property="id" column="guestAccountId"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <association property="guest" column="guestId" resultMap="reservationSystem.mappers.GuestMapper.guestResultMap"/>
+    </resultMap>
+
+</mapper>

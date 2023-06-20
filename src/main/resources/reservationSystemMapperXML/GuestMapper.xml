@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace="reservationSystem.mappers.GuestMapper">
+
+    <select id="selectGuestById" resultMap="guestResultMap">
+        SELECT * FROM guest WHERE guestId = #{id}
+    </select>
+
+    <insert id="insertGuest" parameterType="Guest">
+        INSERT INTO guest (guestId, guestFirstName, guestLastName, guestEmail, guestPhone)
+        VALUES (#{id}, #{firstName}, #{lastName}, #{email}, #{phone})
+    </insert>
+
+    <update id="updateGuest" parameterType="Guest">
+        UPDATE guest SET guestFirstName = #{firstName}, guestLastName = #{lastName}, guestEmail = #{email}, guestPhone = #{phone}
+        WHERE guestId = #{id}
+    </update>
+
+    <delete id="deleteGuest" parameterType="Guest">
+        DELETE FROM guest WHERE guestId = #{id}
+    </delete>
+
+    <select id="selectAllGuests" resultMap="guestResultMap">
+        SELECT * FROM guest
+    </select>
+
+    <resultMap id="guestResultMap" type="Guest" autoMapping="false">
+        <id property="id" column="guestId"/>
+        <result property="firstName" column="guestFirstName"/>
+        <result property="lastName" column="guestLastName"/>
+        <result property="email" column="guestEmail"/>
+        <result property="phone" column="guestPhone"/>
+    </resultMap>
+
+
+</mapper>

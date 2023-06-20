@@ -1,0 +1,130 @@
+2023-06-20 00:36:07,561 INFO r.Main [main] Select reservation by Id with inner join 3 tables below 
+Reservation 
+id: 1
+Confirmation Number: TMS-1234567
+Arrival Date: 2023-11-01
+Departure Date: 2023-11-03
+Number of Guest: 2
+Room Type: RoomType{id=3, name='KBL', description='King Balcony'}
+
+Guest: [Guest{id=4, firstName='Kha', lastName='Kim', email='null', phone='(513) 234-5278'}
+]
+-------
+
+2023-06-20 00:36:07,655 INFO r.s.ReservationService [main] Reservation id: 7 -> Insert reservation successfully
+2023-06-20 00:36:07,828 INFO r.s.ReservationService [main] Reservation id: 6 -> Updated successfully!!!!
+2023-06-20 00:36:07,905 INFO r.s.ReservationService [main] Reservation id: 7 -> Deleted successfully!!!!
+2023-06-20 00:36:07,994 INFO r.Main [main] Select all reservations by left join 3 tables below 
+[Reservation 
+id: 1
+Confirmation Number: TMS-1234567
+Arrival Date: 2023-11-01
+Departure Date: 2023-11-03
+Number of Guest: 2
+Room Type: RoomType{id=3, name='KBL', description='King Balcony'}
+
+Guest: [Guest{id=4, firstName='Kha', lastName='Kim', email='null', phone='(513) 234-5278'}
+]
+-------
+, Reservation 
+id: 2
+Confirmation Number: TMS-1234567
+Arrival Date: 2023-11-01
+Departure Date: 2023-11-03
+Number of Guest: 2
+Room Type: RoomType{id=3, name='KBL', description='King Balcony'}
+
+Guest: [Guest{id=5, firstName='Bob', lastName='Westscott', email='null', phone='null'}
+]
+-------
+, Reservation 
+id: 3
+Confirmation Number: TMS-5671234
+Arrival Date: 2024-01-11
+Departure Date: 2024-01-12
+Number of Guest: 1
+Room Type: RoomType{id=7, name='KSU', description='King Suite'}
+
+Guest: [Guest{id=1, firstName='Hong', lastName='Pham', email='hongp@gmail.com', phone='(813) 546-7400'}
+]
+-------
+, Reservation 
+id: 4
+Confirmation Number: TMS-7891234
+Arrival Date: 2023-09-18
+Departure Date: 2023-09-20
+Number of Guest: 1
+Room Type: RoomType{id=1, name='SK', description='Standard 1 King'}
+
+Guest: [Guest{id=2, firstName='Alex', lastName='Williams', email='alex@yahoo.com', phone='null'}
+]
+-------
+, Reservation 
+id: 5
+Confirmation Number: TMS-3451289
+Arrival Date: 2023-12-03
+Departure Date: 2023-12-07
+Number of Guest: 1
+Room Type: RoomType{id=5, name='KBLWV', description='King Balcony Water View'}
+
+Guest: [Guest{id=3, firstName='Steven', lastName='Jekins', email='stevenjenkins@google.com', phone='(407) 567-3427'}
+]
+-------
+, Reservation 
+id: 6
+Confirmation Number: TMS-5623841
+Arrival Date: 2023-10-07
+Departure Date: 2023-10-10
+Number of Guest: 1
+Room Type: RoomType{id=6, name='QQBLWV', description='Queen/Queen Balcony Water View'}
+
+Guest: [Guest{id=4, firstName='Kha', lastName='Kim', email='null', phone='(513) 234-5278'}
+]
+-------
+]
+2023-06-20 00:36:07,994 INFO r.Main [main] ----------
+2023-06-20 00:36:08,068 INFO r.Main [main] Select room type by id below: 
+RoomType{id=5, name='KBLWV', description='King Balcony Water View'}
+
+2023-06-20 00:36:08,115 INFO r.s.RoomTypeService [main] Room type id: 9 -> Insert room type successfully
+2023-06-20 00:36:08,231 INFO r.s.RoomTypeService [main] Room type id: 8 -> Updated successfully
+2023-06-20 00:36:08,292 INFO r.s.RoomTypeService [main] Room type id: 9 -> Deleted successfully
+2023-06-20 00:36:08,334 INFO r.Main [main] Select all room types below: 
+[RoomType{id=1, name='SK', description='Standard 1 King'}
+, RoomType{id=2, name='SQQ', description='Standard Queen/Queen'}
+, RoomType{id=3, name='KBL', description='King Balcony'}
+, RoomType{id=4, name='QQBL', description='Queen/Queen Balcony'}
+, RoomType{id=5, name='KBLWV', description='King Balcony Water View'}
+, RoomType{id=6, name='QQBLWV', description='Queen/Queen Balcony Water View'}
+, RoomType{id=7, name='KSU', description='King Suite'}
+, RoomType{id=8, name='PSUITE', description='Presidential Suite King'}
+]
+2023-06-20 00:36:08,334 INFO r.Main [main] ----------
+2023-06-20 00:36:08,382 INFO r.Main [main] Select guest by id below: 
+Guest{id=3, firstName='Steven', lastName='Jekins', email='stevenjenkins@google.com', phone='(407) 567-3427'}
+
+2023-06-20 00:36:08,440 INFO r.s.GuestService [main] Insert guest successfully below: 
+Guest{id=7, firstName='Mario', lastName='Diaz', email='mariodiaz123@verizon.net', phone='(813) 546-1485'}
+
+2023-06-20 00:36:08,528 INFO r.s.GuestService [main] Guest id: 6-> Updated Successfully!!!
+2023-06-20 00:36:08,562 INFO r.s.GuestService [main] Guest id: 7-> Delete Successfully!!!!
+2023-06-20 00:36:08,605 INFO r.Main [main] Select all guest below: 
+[Guest{id=1, firstName='Hong', lastName='Pham', email='hongp@gmail.com', phone='(813) 546-7400'}
+, Guest{id=2, firstName='Alex', lastName='Williams', email='alex@yahoo.com', phone='null'}
+, Guest{id=3, firstName='Steven', lastName='Jekins', email='stevenjenkins@google.com', phone='(407) 567-3427'}
+, Guest{id=4, firstName='Kha', lastName='Kim', email='null', phone='(513) 234-5278'}
+, Guest{id=5, firstName='Bob', lastName='Westscott', email='null', phone='null'}
+, Guest{id=6, firstName='Mai', lastName='Nguyen', email='mainguyen123@outlook.com', phone='(302) 478-0266'}
+]
+2023-06-20 00:36:08,605 INFO r.Main [main] ----------
+2023-06-20 00:36:08,682 INFO r.Main [main] Select guest account by id with inner join of 2 tables (Guest & Guest Account) below 
+GuestAccount {id=2, username='hpham123', password='hongpham123', guest=Guest{id=1, firstName='Hong', lastName='Pham', email='hongp@gmail.com', phone='(813) 546-7400'}
+}
+2023-06-20 00:36:08,727 INFO r.s.GuestAccountService [main] Guest account id: 4 -> Inserted Successfully!!!
+2023-06-20 00:36:08,793 INFO r.s.GuestAccountService [main] Guest account id: 1-> Updated Successfully!!!
+2023-06-20 00:36:08,848 INFO r.s.GuestAccountService [main] Guest account id: 4-> Deleted successfully!!!
+2023-06-20 00:36:08,905 INFO r.Main [main] Select all guest accounts by left join of 2 tables (Guest & Guest Account) below 
+[GuestAccount {id=1, username='maiNg1822', password='nguyenMai1822!#', guest=Guest{id=6, firstName='Mai', lastName='Nguyen', email='mainguyen123@outlook.com', phone='(302) 478-0266'}
+}, GuestAccount {id=2, username='hpham123', password='hongpham123', guest=Guest{id=1, firstName='Hong', lastName='Pham', email='hongp@gmail.com', phone='(813) 546-7400'}
+}, GuestAccount {id=3, username='bobwst2020', password='bobwest2020#', guest=Guest{id=5, firstName='Bob', lastName='Westscott', email='null', phone='null'}
+}]

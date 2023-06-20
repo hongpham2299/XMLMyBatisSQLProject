@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace="reservationSystem.mappers.ReservationMapper">
+
+    <select id="selectReservationById" resultMap="reservationResultMap">
+        SELECT reservation.reservationId, reservation.confirmationNumber, reservation.arrivalDate,
+                reservation.departureDate, reservation.numOfGuest,
+                guest.guestId, guest.guestFirstName, guest.guestLastName, guest.guestEmail, guest.guestPhone,
+                roomType.roomTypeId, roomType.roomTypeName, roomType.description
+        FROM reservation
+        JOIN guest ON reservation.guestId = guest.guestId
+        JOIN roomType ON reservation.roomTypeId = roomType.roomTypeId
+        WHERE reservation.reservationId = #{id}
+    </select>
+
+    <select id="selectAllReservations" resultMap="reservationResultMap">
+        SELECT reservation.reservationId, reservation.confirmationNumber, reservation.arrivalDate,
+                reservation.departureDate, reservation.numOfGuest,
+                guest.guestId, guest.guestFirstName, guest.guestLastName, guest.guestEmail, guest.guestPhone,
+                roomType.roomTypeId, roomType.roomTypeName, roomType.description
+        FROM reservation
+        LEFT JOIN guest ON reservation.guestId = guest.guestId
+        LEFT JOIN roomType ON reservation.roomTypeId = roomType.roomTypeId
+    </select>
+
+    <insert id="insertReservation" parameterType="Reservation">
+        INSERT INTO reservation (reservationId, confirmationNumber, arrivalDate, departureDate, numOfGuest, guestId, roomTypeId)
+        VALUES (#{id}, #{confirmationNumber}, #{arrivalDate}, #{departureDate}, #{numOfGuest}, #{guests[0].id}, #{roomType.id})
+    </insert>
+
+    <update id="updateReservation" parameterType="Reservation">
+        UPDATE reservation SET confirmationNumber = #{confirmationNumber}, arrivalDate = #{arrivalDate},
+        departureDate = #{departureDate}, numOfGuest = #{numOfGuest}, guestId = #{guests[0].id}, roomTypeId = #{roomType.id}
+        WHERE reservationId = #{id}
+    </update>
+
+    <delete id="deleteReservation" parameterType="Reservation">
+        DELETE FROM reservation WHERE reservationId = #{id}
+    </delete>
+
+
+    <resultMap id="reservationResultMap" type="Reservation" autoMapping="false">
+        <id property="id" column="reservationId"/>
+        <result property="confirmationNumber" column="confirmationNumber"/>
+        <result property="arrivalDate" column="arrivalDate"/>
+        <result property="departureDate" column="departureDate"/>
+        <result property="numOfGuest" column="numOfGuest"/>
+        <association property="roomType" column="roomTypeId" resultMap="reservationSystem.mappers.RoomTypeMapper.roomTypeResultMap"/>
+        <collection property="guests" column="guestId" resultMap="reservationSystem.mappers.GuestMapper.guestResultMap"/>
+    </resultMap>
+
+</mapper>
